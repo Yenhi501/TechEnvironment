@@ -41,23 +41,24 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    paddingBottom: 60,
+    paddingBottom: 50,
   },
   button: {
     alignSelf: "center",
     backgroundColor: "#98b66e",
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     borderRadius: 15,
+    marginTop: 10,
   },
   buttonText: {
     color: "white",
     fontSize: 18,
   },
   infoContainer: {
-    gap: 8,
+    gap: 10,
     alignItems: "center",
-    marginHorizontal: 70,
+    marginHorizontal: 60,
     marginTop: "auto",
   },
   infoName: {
@@ -65,10 +66,12 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: 500,
     textAlign: "center",
+    letterSpacing: 0.4,
   },
   info: {
     color: "#98b66e",
     textAlign: "center",
+    letterSpacing: 0.4,
   },
   infohighlight: {
     color: "#98b66e",

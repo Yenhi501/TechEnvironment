@@ -59,7 +59,7 @@ export default function HomeScreen() {
           />
         </View>
         <View style={styles.container}>
-          <Text style={styles.title}>Plan delecious tree</Text>
+          <Text style={styles.title}>Plant delecious tree</Text>
           <Text style={styles.info}>
             "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
             consectetur, adipisci velit..."
@@ -82,12 +82,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    color: "#405b28",
+    color: "#50683a",
     fontWeight: 500,
   },
   info: {
     textAlign: "center",
-    color: "#98B66E",
+    color: "#7e9960",
     fontSize: 14,
     letterSpacing: 1,
   },
