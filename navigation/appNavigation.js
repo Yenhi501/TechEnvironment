@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
@@ -30,19 +30,28 @@ LogBox.ignoreLogs([
   "Non-serializable values were found in the navigation state",
 ]);
 
-export default function AppNavigation() {
+export default function AppNavigation({}) {
+  const [isInit, setIsInit] = useState(false);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           contentStyle: { backgroundColor: "white" },
         }}
+        initialRouteName="init"
       >
         <Stack.Screen
-          name="Home"
+          name="init"
+          options={{ headerShown: false }}
+          component={Home}
+        />
+        <Stack.Screen
+          name="tab"
           options={{ headerShown: false }}
           component={HomeTabs}
         />
+
         {/* <Stack.Screen
           name="Product"
           options={{ headerShown: false }}

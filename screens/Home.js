@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const Home = () => (
+const Home = ({ navigation }) => (
   <View style={styles.container}>
     <ImageBackground
-      source={require("C:/Users/admind/OneDrive - The University of Technology/Desktop/Coffee-App-React-Native/assets/main.png")}
+      source={require("C:/Users/admind/OneDrive - The University of Technology/Desktop/Unihack2023/assets/main.png")}
       resizeMode="cover" // Change resizeMode to "contain"
       style={styles.image}
     >
@@ -26,7 +26,7 @@ const Home = () => (
         </Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => alert("Button Pressed!")}
+          onPress={() => navigation.navigate("tab")}
         >
           <Text style={styles.buttonText}>Bắt đầu</Text>
         </TouchableOpacity>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "#98b66e",
     paddingVertical: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     borderRadius: 15,
   },
   buttonText: {
