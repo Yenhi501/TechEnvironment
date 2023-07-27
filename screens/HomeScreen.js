@@ -1,27 +1,22 @@
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  FlatList,
   Dimensions,
+  Image,
   Platform,
   StyleSheet,
+  Text,
+  View,
 } from "react-native";
-import React, { useState } from "react";
+import { BellAlertIcon } from "react-native-heroicons/outline";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { themeColors } from "../theme";
-import { StatusBar } from "expo-status-bar";
-import { categories, coffeeItems } from "../constants";
 import Carousel from "react-native-snap-carousel";
 import CoffeeCard from "../components/coffeeCard";
-import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
-import { MapPinIcon } from "react-native-heroicons/solid";
+import { coffeeItems } from "../constants";
 
 const { width, height } = Dimensions.get("window");
 const ios = Platform.OS == "ios";
-export default function HomeScreen() {
+export default function HomeScreen(r) {
   const [activeCategory, setActiveCategory] = useState(1);
 
   return (
@@ -32,13 +27,13 @@ export default function HomeScreen() {
         <View className="mx-4 mt-2 flex-row justify-between items-center">
           <Image
             source={require("../assets/images/avatar.png")}
-            className="h-11 w-11 rounded-full"
+            className="h-10 w-10 rounded-full"
           />
-          <BellIcon size="30" color="black" />
+          <BellAlertIcon size="28" color="#155344" />
         </View>
       </SafeAreaView>
 
-      {/* coffee cards */}
+      {/* item cards */}
       <View
         className={`overflow-visible flex justify-center flex-1 ${
           ios ? "mt-10" : ""
@@ -89,6 +84,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#7e9960",
     fontSize: 14,
-    letterSpacing: 1,
+    letterSpacing: 0.8,
   },
 });

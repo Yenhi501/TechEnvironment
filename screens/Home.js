@@ -3,8 +3,8 @@ import {
   ImageBackground,
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
+  View,
 } from "react-native";
 
 const Home = ({ navigation }) => (
@@ -47,9 +47,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "#98b66e",
     paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 15,
-    marginTop: 10,
+    paddingHorizontal: 34,
+    borderRadius: 40,
+    marginTop: 14,
   },
   buttonText: {
     color: "white",
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     color: "#98b66e",
     textAlign: "center",
     letterSpacing: 0.4,
+    lineHeight: 20,
   },
   infohighlight: {
     color: "#98b66e",

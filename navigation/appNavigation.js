@@ -1,26 +1,26 @@
-import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "../screens/HomeScreen";
+import React from "react";
+import { LogBox, Platform, Text, View } from "react-native";
 import Home from "../screens/Home";
-import { Dimensions, LogBox, Platform, Text, View } from "react-native";
-// import ProductScreen from "../screens/ProductScreen";
+import HomeScreen from "../screens/HomeScreen";
+import ProductScreen from "../screens/ProductScreen";
+import SuggestionScreen from "../screens/SuggestionScreen";
 import { themeColors } from "../theme";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
-  HomeIcon as HomeOutline,
-  UserIcon as UserOutline,
-  PencilSquareIcon as PencilSquareOutline,
   ChartPieIcon as ChartOutline,
+  HomeIcon as HomeOutline,
+  PencilSquareIcon as PencilSquareOutline,
   QueueListIcon as QueueListOutline,
+  UserIcon as UserOutline,
 } from "react-native-heroicons/outline";
 import {
-  HomeIcon as HomeSolid,
-  UserIcon as UserSolid,
-  PencilSquareIcon as PencilSquareSolid,
   ChartPieIcon as ChartPieSolid,
+  HomeIcon as HomeSolid,
+  PencilSquareIcon as PencilSquareSolid,
   QueueListIcon as QueueListSolid,
+  UserIcon as UserSolid,
 } from "react-native-heroicons/solid";
 
 const Stack = createNativeStackNavigator();
@@ -31,8 +31,6 @@ LogBox.ignoreLogs([
 ]);
 
 export default function AppNavigation({}) {
-  const [isInit, setIsInit] = useState(false);
-
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -52,11 +50,16 @@ export default function AppNavigation({}) {
           component={HomeTabs}
         />
 
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Product"
           options={{ headerShown: false }}
           component={ProductScreen}
-        /> */}
+        />
+        <Stack.Screen
+          name="suggest"
+          options={{ headerShown: false }}
+          component={SuggestionScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -72,10 +75,6 @@ function HomeTabs() {
         tabBarStyle: {
           height: 75,
           alignItems: "center",
-          // marginBottom: 24,
-          // borderRadius: 100,
-          // marginHorizontal: 24,
-          // backgroundColor: themeColors.bgLight,
         },
         tabBarItemStyle: {
           marginTop: ios ? 30 : 0,
@@ -84,8 +83,8 @@ function HomeTabs() {
     >
       <Tab.Screen name="list" component={HomeScreen} />
       <Tab.Screen name="chart" component={HomeScreen} />
-      <Tab.Screen name="home" component={Home} />
-      <Tab.Screen name="suggest" component={HomeScreen} />
+      <Tab.Screen name="home" component={HomeScreen} />
+      <Tab.Screen name="suggest" component={SuggestionScreen} />
       <Tab.Screen name="user" component={HomeScreen} />
     </Tab.Navigator>
   );
@@ -96,9 +95,27 @@ const menuIcons = (route, focused) => {
 
   if (route.name === "home") {
     icon = focused ? (
-      <HomeSolid size="25" color={themeColors.bgLight} />
+      <View
+        style={{
+          padding: 20,
+          backgroundColor: "#eaf0e2",
+          borderRadius: 100,
+          marginBottom: 38,
+        }}
+      >
+        <HomeSolid size="25" color={themeColors.bgLight} />
+      </View>
     ) : (
-      <HomeOutline size="26" strokeWidth={1.5} color="#000" />
+      <View
+        style={{
+          padding: 20,
+          backgroundColor: "#eaf0e2",
+          borderRadius: 100,
+          marginBottom: 40,
+        }}
+      >
+        <HomeOutline size="26" strokeWidth={1.5} color="#000" />
+      </View>
     );
   } else if (route.name === "user") {
     icon = focused ? (
@@ -127,9 +144,21 @@ const menuIcons = (route, focused) => {
   }
 
   let buttonClass = focused ? "bg-white" : "";
+  let label = route.name.charAt(0).toUpperCase() + route.name.slice(1);
   return (
-    <View className={"flex items-center rounded-full p-4 " + buttonClass}>
-      {icon}
+    <View style={{ alignItems: "center" }}>
+      <View style={"flex items-center rounded-full p-4 " + buttonClass}>
+        {icon}
+      </View>
+      <Text
+        style={{
+          color: focused ? "#779350" : "black",
+          fontSize: 12,
+          marginTop: 4,
+        }}
+      >
+        {label}
+      </Text>
     </View>
   );
 };
